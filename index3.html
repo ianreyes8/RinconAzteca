@@ -38,7 +38,7 @@
                     </label>
                     <label>
                         <i class='bx bx-envelope bx-flip-horizontal' ></i>
-                        <input type="correo" name="email" id="corre" pattern="^[0-9]{4}-?[0-9]{4}+$" title="NombreCorreo@dominio" class="control" 
+                        <input type="email" name="email" id="corre" title="NombreCorreo@dominio" class="control" 
                         placeholder="Correo Electronico" required/>
                     </label>
                     <label>
@@ -70,7 +70,7 @@
                 <form class="form" action="iniciarsesion.php" method="POST">
                     <label>
                         <i class='bx bx-envelope bx-flip-horizontal' ></i>
-                        <input type="correo" id="correo" name="username" value="" pattern="^[0-9]{4}-?[0-9]{4}+$" title="NombreCorreo@dominio" class="control" 
+                        <input type="email" id="correo" name="username" value="" title="NombreCorreo@dominio" class="control" 
                         placeholder="Correo Electronico" required/>
                     </label>
                     <label>
@@ -80,6 +80,7 @@
                     </label>
                     <input type="submit" value="Inicia Sesion" name="login_button">
                 </form>
+                <p class="link-instalar"><a href="instalar.php">Instalar / reiniciar base de datos</a></p>
             </div>
         </div>
     </div>

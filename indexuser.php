@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/auth.php';
+requiere_login();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +83,7 @@
    
    <!--SE AGREGO TITTLE PARA QUE AL PONER EL CURSOR SOBRE EL ICONO DE DESLOGUEO APAREZCA EL MENZAJE CERRAR SESION-->
             
-                <a href="index.html" class="nav-icon" id="user-icon" title="Cerrar Sesión">
+                <a href="logout.php" class="nav-icon" id="user-icon" title="Cerrar Sesión">
                     <i class='bx bx-log-out'></i>
                 </a>
 

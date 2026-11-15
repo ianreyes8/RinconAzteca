@@ -1,20 +1,19 @@
 <?php
-include("conexion.php");
+require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/conexion.php';
+requiere_login();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['primerNombre'])) {
-    $primerNombre    = $_POST['primerNombre'];
-    $primerApellido  = $_POST['primerApellido'];
+    $primerNombre    = trim($_POST['primerNombre']);
+    $primerApellido  = trim($_POST['primerApellido']);
     $numeroTarjeta   = $_POST['numeroTarjeta'];
     $fechaExpiracion = $_POST['fechaExpiracion'];
     $cvv             = $_POST['cvv'];
 
-    $sqlgrabar = "INSERT INTO pagos(primerNombre, primerApellido, numeroTarjeta, fechaExpiracion, cvv) 
-                  VALUES ('$primerNombre','$primerApellido','$numeroTarjeta','$fechaExpiracion','$cvv')";
+    $stmt = mysqli_prepare($conexion, 'INSERT INTO pagos (primerNombre, primerApellido, numeroTarjeta, fechaExpiracion, cvv) VALUES (?,?,?,?,?)');
+    mysqli_stmt_bind_param($stmt, 'sssss', $primerNombre, $primerApellido, $numeroTarjeta, $fechaExpiracion, $cvv);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
-    if (mysqli_query($conexion, $sqlgrabar)) {
-        echo '<script>alert("Pago Exitoso"); window.location.href="indexuser.html";</script>';
-    } else {
-        echo "Error: " . mysqli_error($conexion);
-    }
+    echo '<script>alert("Pago Exitoso"); window.location.href="indexuser.php";</script>';
 }
-?>
