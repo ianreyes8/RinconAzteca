@@ -58,17 +58,23 @@ function requiere_login(): void
     }
 }
 
+/** Muestra la pantalla de acceso denegado y termina. */
+function acceso_denegado(): void
+{
+    http_response_code(403);
+    echo '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Acceso denegado</title></head>'
+       . '<body style="font-family:sans-serif;text-align:center;margin-top:15%">'
+       . '<h1>Acceso denegado</h1><p>No tiene permisos para ver esta sección.</p>'
+       . '<a href="indexuser.php">Volver al inicio</a></body></html>';
+    exit();
+}
+
 /** Obliga a tener un rol específico; si no, muestra acceso denegado. */
 function requiere_rol(string $rol): void
 {
     requiere_login();
     if (($_SESSION['rol'] ?? '') !== $rol) {
-        http_response_code(403);
-        echo '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Acceso denegado</title></head>'
-           . '<body style="font-family:sans-serif;text-align:center;margin-top:15%">'
-           . '<h1>Acceso denegado</h1><p>No tiene permisos para ver esta sección.</p>'
-           . '<a href="indexuser.php">Volver al inicio</a></body></html>';
-        exit();
+        acceso_denegado();
     }
 }
 

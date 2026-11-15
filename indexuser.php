@@ -54,6 +54,7 @@ requiere_login();
                 <li><a href="#Eventos" class="nav-links">EVENTOS</a></li>
                 <li><a href="#Galeria" class="nav-links">GALERIA</a></li>
                 <li><a href="#footer" class="nav-links">CONTACTO</a></li>
+                <li><a href="panel.php" class="nav-links"><?= es_admin() ? 'ADMINISTRACIÓN' : 'MI PANEL' ?></a></li>
             </ul>
 
             <ul class="nav-btns">
