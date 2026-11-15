@@ -272,3 +272,12 @@ body{
  }
 
  
+/* Enlace al instalador de la base de datos */
+.link-instalar {
+    margin-top: 14px;
+    font-size: .85rem;
+    text-align: center;
+}
+.link-instalar a {
+    color: #ac4747;
+}

@@ -112,7 +112,7 @@ menuTabs.addEventListener('click', function(e){
 // Obtén el elemento del icono por su ID
 let userIcon = document.getElementById("user-icon");
 userIcon.addEventListener("click", function() {
-    window.location.href = "index3.html";
+    window.location.href = "logout.php";
 });
 
 // Obtén el elemento del enlace por su ID

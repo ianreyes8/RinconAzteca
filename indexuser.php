@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/auth.php';
+requiere_login();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +54,7 @@
                 <li><a href="#Eventos" class="nav-links">EVENTOS</a></li>
                 <li><a href="#Galeria" class="nav-links">GALERIA</a></li>
                 <li><a href="#footer" class="nav-links">CONTACTO</a></li>
+                <li><a href="panel.php" class="nav-links"><?= es_admin() ? 'ADMINISTRACIÓN' : 'MI PANEL' ?></a></li>
             </ul>
 
             <ul class="nav-btns">
@@ -79,7 +84,7 @@
    
    <!--SE AGREGO TITTLE PARA QUE AL PONER EL CURSOR SOBRE EL ICONO DE DESLOGUEO APAREZCA EL MENZAJE CERRAR SESION-->
             
-                <a href="index.html" class="nav-icon" id="user-icon" title="Cerrar Sesión">
+                <a href="logout.php" class="nav-icon" id="user-icon" title="Cerrar Sesión">
                     <i class='bx bx-log-out'></i>
                 </a>
 

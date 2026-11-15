@@ -1,21 +1,20 @@
 <?php
-include("conexion.php");
+require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/conexion.php';
+requiere_login();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['tiporeserva'])) {
-    $nombre      = $_POST['nombreuser'];
-    $correo      = $_POST['email'];
-    $telefono    = $_POST['telefono'];
+    $nombre      = trim($_POST['nombreuser']);
+    $correo      = trim($_POST['email']);
+    $telefono    = trim($_POST['telefono']);
     $fecha       = $_POST['date'];
     $hora        = $_POST['time'];
     $tiporeserva = $_POST['tipo_evento'];
 
-    $sqlgrabar = "INSERT INTO tiporeserva(nombre, correo, telefono, fecha, hora, tiporeserva) 
-                  VALUES ('$nombre','$correo','$telefono','$fecha','$hora','$tiporeserva')";
+    $stmt = mysqli_prepare($conexion, 'INSERT INTO tiporeserva (nombre, correo, telefono, fecha, hora, tiporeserva) VALUES (?,?,?,?,?,?)');
+    mysqli_stmt_bind_param($stmt, 'ssssss', $nombre, $correo, $telefono, $fecha, $hora, $tiporeserva);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
-    if (mysqli_query($conexion, $sqlgrabar)) {
-        echo '<script>alert("Reserva Exitosa"); window.location.href="indexuser.html";</script>';
-    } else {
-        echo "Error: " . mysqli_error($conexion);
-    }
+    echo '<script>alert("Reserva Exitosa"); window.location.href="indexuser.php";</script>';
 }
-?>
